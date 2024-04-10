@@ -10,5 +10,4 @@ package AccountProjectPackage;
  */
 public class InputNotZeroToPositiveNine extends Exception{
     
-    
 }
