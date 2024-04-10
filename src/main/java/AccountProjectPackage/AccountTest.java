@@ -35,11 +35,8 @@ public class AccountTest {
                             getPin = getInput.nextInt();
                             accountList.get(index-1).setPin(getPin, pinValidCounter);
                         }
-                        catch(){
-                            
-                        }
-                        catch(){
-                            
+                        catch(Exception e){
+                            System.out.println("SAMOKE");
                         }
                     }while(pinValidCounter != 4);
                     System.out.print("Set 4 digit pin");
