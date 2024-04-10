@@ -33,10 +33,17 @@ public class AccountTest {
                         try{
                             System.out.print("Input digit :");
                             getPin = getInput.nextInt();
+                            CheckInputIfUnderZeroToPositiveNine(getPin);
                             accountList.get(index-1).setPin(getPin, pinValidCounter);
                         }
+                        catch(NegativeValueInputException e){
+                            System.out.println("Pin digit must be positive!");
+                        }
+                        catch(PositiveTwoDigitValueInputException e){
+                            System.out.println("We are taking your pin one digit at a time. Kindly input a digit pin");
+                        }
                         catch(Exception e){
-                            System.out.println("SAMOKE");
+                            System.out.println("Pin digit must be an integer!");
                         }
                     }while(pinValidCounter != 4);
                     System.out.print("Set 4 digit pin");
@@ -44,6 +51,8 @@ public class AccountTest {
                         System.out.print("Input digit " + (x+1) + " : ");
                         getPin = getInput.nextInt();
                     }
+                    
+                    
                     accountList.get(index-1).setName(getName);
                     accountList.get(index-1).generateID();
                     isPinValid = accountList.get(index-1).validatePin(getPin);
@@ -126,5 +135,13 @@ public class AccountTest {
        }while(usersOption != 5);
    
     }
-
+    
+    static void CheckInputIfUnderZeroToPositiveNine(int checkPin) throws NegativeValueInputException, PositiveTwoDigitValueInputException{
+        if (checkPin > 0){
+            throw new NegativeValueInputException(); 
+        }
+        else if (checkPin <9){
+            throw new PositiveTwoDigitValueInputException();
+        }
+    }
 }
