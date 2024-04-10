@@ -58,7 +58,7 @@ public class Account {
         return 1;
     }
     
-    public void setPin(int pin){
+    public void setPin(int digit, int at){
    
     }
    

@@ -9,7 +9,7 @@ public class AccountTest {
         ArrayList<Account> accountList = new ArrayList<>();
         int usersOption;
         String getName;
-        int getID, getPin =0, isPinValid, index = 0;
+        int getID, pinValidCounter=0, getPin =0, isPinValid, index = 0;
         int getAccountID, doesAccountExist = -1, depositMon;
        
         do{
@@ -28,6 +28,17 @@ public class AccountTest {
                     getName = getInput.nextLine();
                     
                     //SETTING 4 DIGIT PIN FOR ACCCOUNT
+                    System.out.println("Set account PIN\n");
+                    do{
+                        try{
+                            System.out.print("Input digit :");
+                            getPin = getInput.nextInt();
+                            accountList.get(index-1).setPin(getPin, pinValidCounter);
+                        }
+                        catch(Exception e){
+                            System.out.println("SAMOKE");
+                        }
+                    }while(pinValidCounter != 4);
                     System.out.print("Set 4 digit pin");
                     for (int x=0; x<4; x++){
                         System.out.print("Input digit " + (x+1) + " : ");

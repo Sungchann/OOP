@@ -8,6 +8,6 @@ package AccountProjectPackage;
  *
  * @author JAMES
  */
-public class notAnInteger extends Exception{
+public class InputNotZeroToPositiveNine extends Exception{
     
 }
