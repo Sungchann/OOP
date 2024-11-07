@@ -12,7 +12,8 @@ public class Character {
     private int health;
     private String name;
     private static int count = 0; 
-   
+    static int hasHunger = 0;
+    
     Character(){
        
     }
@@ -41,5 +42,8 @@ public class Character {
     
     private void getCurrentLevel(){
         System.out.println("Here");
+    }
+     static void displayHere(){
+        System.out.println("VENIZ SAYAW2 SA PE");
     }
 }

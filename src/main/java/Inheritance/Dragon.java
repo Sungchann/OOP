@@ -38,4 +38,7 @@ public class Dragon extends Character{
         System.out.println("HERE");
     }
     
+    public void display(){
+        System.out.println("LOL");
+    }
 }

@@ -26,6 +26,9 @@ public class test {
         }
         //System.out.println(character2.eats());
         character1.getNumOfCharacters();
+        
+        
+        
     }
 
 }

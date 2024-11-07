@@ -4,88 +4,111 @@
  */
 package AccountProjectPackage;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author JAMES
  */
 public class Account {
-    private String accountName; 
+    private String username; 
+    private String firstName;
+    private String lastName;
     private int accountID;
-    private int balance;
-    private int pin[] = new int[4]; //CREATING FOUR PIN 
-    private static int count;
+    private float balance;
+    private String password; 
    
    
     // ------------------------------------------------------------------------
     // CREATING ACCOUNT
     // ------------------------------------------------------------------------
-    
     Account(){
         this.balance = 0;
     }
    
-    Account(String name, int accountID, int balance){
-        this.accountName = name;
-        this.balance = 0;
-        this.accountID = accountID;
-    }
-   
 
-    public void setName(String name){
-        this.accountName = name;
-    }
-   
-    public void generateID(){
-        this.accountID = 100;
-    }
-
-    
-    public int validatePin(int pin){
-        int tempPin = pin; 
-        int digitCount = 0; 
-        do{
-            tempPin /= 10; 
-            digitCount++; 
-            if(digitCount > 4){
-                System.out.println("HEREEEE");
-                return -1;
-            }
-            else if(digitCount < 4 && tempPin%10 == tempPin){
-                System.out.println("HERE AY");
-                return -1;
-            }
-        }while(tempPin%10 != tempPin);
-        return 1;
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
     
-    public void setPin(int digit, int at){
-   
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+    
+    public void generateID(int x){
+        this.accountID = 100 + x;
+    }
+    
+    public void setUsername(String username){
+        this.username = username;
+    }
+    public void setPassword(String password){
+        this.password = password;
     }
    
-    // ------------------------------------------------------------------------
-    //
-    // ------------------------------------------------------------------------
-    public int findAccount(int accountID){
-        if (accountID == this.accountID)
+    public int findAccount(String userName){
+        if (this.username.equals(userName)){
             return 1;
+        }
         else{
-            return -1;
+            return 0;
+        }
+    }
+    public int findAccountUsername(String usersName, ArrayList<Account> accountList){
+        int numberOfAccounts = accountList.size();
+        int doesAccountExist; 
+        for (int x=0; x<numberOfAccounts; x++){
+            doesAccountExist = accountList.get(x).findAccount(usersName);
+            if (doesAccountExist == 1){
+                return x;
+            }
+        }
+        return -1;
+    }
+    
+    public boolean checkPassword(String password){
+        if (this.password.equals(password)){
+            return true;
+        }
+        else{
+            return false;
         }
     }
     
-    public int getBalance(){
+    public String getFirstName(){
+        return this.firstName;
+    }
+    public String getLastName(){
+        return this.lastName;
+    }
+    public String getUsername(){
+        return this.username;
+    }
+    public int getID(){
+        return this.accountID;
+    }
+    
+    public float getBalance(){
         return this.balance;
     }
     
-    public void depositAmount(int amount){
+    public void depositAmount(float amount){
         this.balance += amount;
+    }
+    
+    public void withdrawAmount(float amount){
+        this.balance -= amount;
+    }
+    
+    public void transferAmount(float amount, int atIndexToBeTransferred, ArrayList<Account> accountList){
+        this.balance -= amount;
+        accountList.get(atIndexToBeTransferred).depositAmount(amount);
     }
     
     @Override
     public String toString() {
-        return "Account Information \nAccountName = " + this.accountName + "\naccountID = " + this.accountID + "\nbalance = " + this.balance;
+        return "Account{" + "username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", accountID=" + accountID + ", balance=" + balance + '}';
     }
-    
-    
+ 
 }
 
